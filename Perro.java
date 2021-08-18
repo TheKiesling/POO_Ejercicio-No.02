@@ -52,7 +52,7 @@ public class Perro {
      * getterTamaño: retorna el valor del tamaño
      * @return
      */
-    private String getTamaño(){
+    public String getTamaño(){
         return tamaño;
     }
     //***************************************************************
@@ -61,7 +61,7 @@ public class Perro {
      * getterRaza: retorna el valor de la raza
      * @return
      */
-    private String raza(){
+    public String getRaza(){
         return raza;
     }
     //***************************************************************
