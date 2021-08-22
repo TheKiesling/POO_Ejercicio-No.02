@@ -21,9 +21,8 @@ public class Familia {
 
     //---------------------------PROPIEDADES-------------------------
     private String apellido;
-    private Persona[] miembros;
+    public Persona[] miembros;
     private int numero_mascotas;
-
     //---------------------------MÉTODOS-----------------------------
 
     /****************************************************************
@@ -32,96 +31,47 @@ public class Familia {
      * @param miembros
      * @param numero_mascotas
      * @param persona
-     */
-    public Familia(String apellido, Persona[] miembros, int numero_mascotas, Persona persona){
+    */
+    public Familia(String apellido, Persona[] miembros){
         this.apellido = apellido;
         this.miembros = miembros;
-        this.numero_mascotas = numero_mascotas;
-        miembros = new Persona[10];
+        //Una familia al ingresar al sistema tiene 0 mascotas.
+        numero_mascotas = 0;        
     }
     //***************************************************************
 
     /****************************************************************
-     * asignarMascota: indica si se pudo asignar la nueva mascota en alguna familia
-     * @param perro
-     * @return bandera
-     */
-    public boolean asignarMascota(Perro perro){
-        boolean bandera = false;
-
-        for (int i = 0; i < 10; i++){
-            if(verificarMascota(perro, miembros[i].getEdad()));{
-                bandera = true;
-                break;
-            }
-        }
-
-        return bandera;
+     * getterApellido: retorna el valor del apellido
+     * @return apellido
+    */
+    public String getApellido(){
+        return apellido;
     }
     //***************************************************************
 
     /****************************************************************
-     * verificarMascota: verifica si la mascota es apta para la familia evaluada
-     * @param perro
-     * @param edad
-     * @return bandera
-     */
-    private boolean verificarMascota(Perro perro, int edad){
-        String raza = perro.getRaza();
-        String tamaño = perro.getTamaño();
-        boolean bandera = false;
-
-        //Si hay un niño pequeño, y se le asigna un perro con tamaño pequeño y no es raza peligrosa
-        if (edad < 10 && tamaño == "pequeno" && verificarRaza(raza))
-            bandera = true;
-        
-        //Si hay un niño grande y se le asigna un perro con tamaño pequeño o mediano y no es raza peligrosa
-        else if (18 > edad && edad > 10 && (tamaño == "pequeno" || tamaño == "mediano") && verificarRaza(raza))
-            bandera = true;
-
-        //Si no hay niños 
-        else if (edad > 18)
-            bandera = true;
-
-        return bandera;
+     * getterNumeroMascotas: retorna el valor del número de mascotas
+     * @return numero_mascotas
+    */
+    public int getNumeroMascotas(){
+        return numero_mascotas;
     }
     //***************************************************************
 
     /****************************************************************
-     * verificarRaza: verifica si la raza del perro no es peligrosa
-     * @param raza
-     * @return bandera
-     */
-    private boolean verificarRaza(String raza){
-        String[] razas_peligrosas = {
-            "Pit bull terrier", 
-            "American Staffordshire terrier", 
-            "Tosa Inu",
-            "Dogo argentino",
-            "Dogo Guatemalteco",
-            "Fila brasileño",
-            "Presa canario",
-            "Doberman",
-            "Gran perro japones", 
-            "Mastin napolitano",
-            "Presa Mallorqui",
-            "Dogo de burdeos",
-            "Bullmastiff",
-            "Bull terrier inglés",
-            "Bulldog americano",
-            "Rhodesiano",
-            "Rottweiler"
-        };
-        boolean bandera = true;
+     * getterMiembros: retorna el arreglo de personas
+     * @return
+    */
+    public Persona[] getMiembros(){
+        return miembros;
+    }
+    //***************************************************************
 
-        for (int i = 0; i < razas_peligrosas.length; i++){
-            if (raza.equals(razas_peligrosas[i])){
-                bandera = false;
-                break;
-            }
-        }
-
-        return bandera;
+    /** 
+     * setterNumeroMascotas: suma el número de mascotas que tiene la familia
+    */
+    public void setNumeroMascotas(){
+        numero_mascotas++;
     }
     //***************************************************************
 }
