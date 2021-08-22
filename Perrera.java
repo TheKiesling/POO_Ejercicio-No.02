@@ -48,7 +48,7 @@ public class Perrera {
         //2da Familia
         miembros = new Persona[2];
         persona = new Persona(16, "Federico"); miembros[0] = persona;
-        persona = new Persona(28, "Guillermo"); miembros[1] = persona;
+        persona = new Persona(38, "Guillermo"); miembros[1] = persona;
         Arrays.sort(miembros);
         familia = new Familia("Lange", miembros); familias[1] = familia;
 
@@ -70,6 +70,7 @@ public class Perrera {
     */
     public boolean agregarFamilia(String apellido, Persona[] miembros){
         if (numero_familias < 14){
+            Arrays.sort(miembros);
             //Instancia la familia y la agrega al arreglo de Familias en la posición que le corresponde 
             familia = new Familia(apellido, miembros);
             numero_familias++;
